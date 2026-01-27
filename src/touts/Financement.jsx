@@ -113,7 +113,7 @@ function Financement() {
         </div>
 
         <div className="financement-block">
-            <img src="/image/capture.png" alt="CPF logo" className="financement-logo" />
+            <img src="public/image/capture.png" alt="CPF logo" className="financement-logo" />
           <div className="financement-content">
             <h3>CSP, POE, FSE et autres dispositifs</h3>
             <p>Des dispositifs spécifiques pour accompagner la réinsertion et l’acquisition de compétences stratégiques.</p>
@@ -127,7 +127,7 @@ function Financement() {
         </div>
 
         <div className="financement-block">
-            <img src="/image/captur1.png" alt="CPF logo" className="financement-logo" />
+            <img src="public/image/captur1.png" alt="CPF logo" className="financement-logo" />
           <div className="financement-content">
             <h3>Financement Personnel & Banques Partenaires</h3>
             <p>Investir dans votre formation est une décision stratégique pour votre avenir.</p>
