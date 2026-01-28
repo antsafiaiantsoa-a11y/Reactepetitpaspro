@@ -17,6 +17,10 @@ import Blog from './touts/Blog';
 import After from './touts/After';
 import Modification from './touts/Modification';
 import Profil from './touts/Profil';
+import Logout from "./touts/Logout";
+
+
+
 
 function AppLayout() {
   const location = useLocation();
@@ -42,6 +46,7 @@ function AppLayout() {
         <Route path="/profil" element={<Profil />} />
         <Route path="/connexion" element={<Connexion />} />
         <Route path="/inscription" element={<Inscription />} />
+        <Route path="/logout" element={<Logout />} />
       </Routes>
 
       <Footer />
