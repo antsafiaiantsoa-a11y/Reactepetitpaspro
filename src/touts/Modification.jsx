@@ -10,7 +10,7 @@ function Modification() {
 
   // 🔄 Récupérer le profil utilisateur
   useEffect(() => {
-    fetch("http://localhost:3000/api/users")
+    fetch("https://backendepetitpas-production.up.railway.app/api/users")
       .then(res => res.json())
       .then(data => {
         setUser(data);
@@ -24,7 +24,7 @@ function Modification() {
   // 🔹 Modifier nom et email
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:3000/api/users", {
+    fetch("https://backendepetitpas-production.up.railway.app/api/users", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ full_name: fullName, email })

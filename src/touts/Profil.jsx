@@ -5,7 +5,7 @@ function Profil() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/users", { credentials: "include" })
+    fetch("https://backendepetitpas-production.up.railway.app/api/users", { credentials: "include" })
       .then(res => res.json())
       .then(data => setUser(data))
       .catch(err => console.error(err));

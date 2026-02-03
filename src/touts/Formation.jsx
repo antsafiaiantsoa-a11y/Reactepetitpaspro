@@ -8,7 +8,7 @@ function Formation() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/formations")
+    fetch("https://backendepetitpas-production.up.railway.app/api/formations")
       .then((res) => {
         if (!res.ok) {
           throw new Error("Erreur lors du chargement des formations");

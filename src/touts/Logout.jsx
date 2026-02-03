@@ -6,7 +6,7 @@ function Logout() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.post("http://localhost:3000/logout", {}, {
+    axios.post("https://backendepetitpas-production.up.railway.app/logout", {}, {
       withCredentials: true
     })
     .then(() => {
