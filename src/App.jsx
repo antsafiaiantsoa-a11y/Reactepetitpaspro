@@ -26,7 +26,7 @@ function AppLayout() {
   const location = useLocation();
 
   // Liste des chemins où tu ne veux pas afficher le Header
- const noHeaderPaths = ['/profil', '/modification', '/after'];
+ const noHeaderPaths = ['/profil', '/modification', '/after','/formations'];
 
   const showHeader = !noHeaderPaths.includes(location.pathname);
 
@@ -38,6 +38,7 @@ function AppLayout() {
         <Route path="/" element={<Connexion />} />
         <Route path="/accueil" element={<Accueil />} />
         <Route path="/formation" element={<Formation />} />
+        <Route path="/formations" element={<Formations />} />
         <Route path="/financement" element={<Financement />} />
         <Route path="/apropos" element={<Apropos />} />
         <Route path="/blog" element={<Blog />} />
