@@ -23,11 +23,12 @@ import Formations from './touts/formations';
 
 
 
+
 function AppLayout() {
   const location = useLocation();
 
   // Liste des chemins où tu ne veux pas afficher le Header
- const noHeaderPaths = ['/profil', '/modification', '/after','/formations'];
+ const noHeaderPaths = ['/profil', '/modification', '/after','/formations',];
 
   const showHeader = !noHeaderPaths.includes(location.pathname);
 
