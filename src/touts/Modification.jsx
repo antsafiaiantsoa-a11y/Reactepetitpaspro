@@ -7,8 +7,9 @@ function Modification() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [avatar, setAvatar] = useState("image/default-avatar.jpg");
+  const [loading, setLoading] = useState(false);
 
-  // 🔄 Récupérer le profil utilisateur
+  // 🔄 Charger profil
   useEffect(() => {
     fetch("https://backendepetitpas-production.up.railway.app/api/users")
       .then(res => res.json())
@@ -21,9 +22,12 @@ function Modification() {
       .catch(err => console.error(err));
   }, []);
 
-  // 🔹 Modifier nom et email
+  // 💾 Enregistrer modifications
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
+    setMessage("");
+
     fetch("https://backendepetitpas-production.up.railway.app/api/users", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -34,70 +38,77 @@ function Modification() {
         if (data.error) setMessage(data.error);
         else {
           setUser(data.user);
-          setMessage(data.message);
+          setMessage("✅ Profil mis à jour avec succès");
         }
       })
-      .catch(err => console.error(err));
+      .catch(() => setMessage("❌ Une erreur est survenue"))
+      .finally(() => setLoading(false));
   };
 
-  // 🔹 Sélectionner une photo et afficher un aperçu
+  // 🖼 Aperçu avatar
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
-
-    const previewUrl = URL.createObjectURL(file);
-    setAvatar(previewUrl);
+    setAvatar(URL.createObjectURL(file));
   };
 
-  if (!user) return <p>Chargement des informations...</p>;
+  if (!user) {
+    return (
+      <div className="text-center mt-5">
+        <div className="spinner-border text-primary"></div>
+        <p className="mt-3">Chargement du profil...</p>
+      </div>
+    );
+  }
 
   return (
-    <div className="container mt-4">
+    <div className="container py-4">
 
-      {/* Header simple avec liens */}
-      <header className="d-flex align-items-center justify-content-between mb-4">
+      {/* HEADER */}
+      <header className="d-flex justify-content-between align-items-center mb-4">
         <div className="d-flex align-items-center gap-2">
-          <img src="image/e-petitpas.jpg" alt="Logo" style={{ width: 150 }} />
-          <h1 className="fw-bold mt-2">E-Petitpas</h1>
+          <img src="image/e-petitpas.jpg" alt="Logo" style={{ width: 120 }} />
+          <h4 className="fw-bold m-0">E-Petitpas</h4>
         </div>
         <nav>
-          <ul className="d-flex gap-3 list-unstyled mb-0">
-            <li><Link to="/accueil">Accueil</Link></li>
-            <li><Link to="/formations">Formations</Link></li>
-            <li><Link to="/logout">Déconnexion</Link></li>
-          </ul>
+          <Link className="me-3" to="/accueil">Accueil</Link>
+          <Link className="me-3" to="/formations">Formations</Link>
+          <Link to="/logout" className="text-danger">Déconnexion</Link>
         </nav>
       </header>
 
-      {/* Profil utilisateur */}
-      <div className="profile-header mt-4 d-flex align-items-center gap-3">
-        <img
-          src={avatar}
-          alt="Avatar"
-          style={{ width: 120, height: 120, borderRadius: "50%", objectFit: "cover" }}
-        />
-        <div className="profile-info">
-          <h2>{user.full_name}</h2>
-          <p>{user.email}</p>
+      {/* PROFIL */}
+      <div className="card shadow-sm p-4 mb-4">
+        <div className="d-flex align-items-center gap-4">
+          <label style={{ cursor: "pointer" }}>
+            <img
+              src={avatar}
+              alt="Avatar"
+              className="rounded-circle border"
+              style={{ width: 130, height: 130, objectFit: "cover" }}
+            />
+            <input
+              type="file"
+              accept="image/*"
+              hidden
+              onChange={handleFileChange}
+            />
+          </label>
+
+          <div>
+            <h3 className="mb-1">{user.full_name}</h3>
+            <p className="text-muted mb-0">{user.email}</p>
+            <small className="text-secondary">
+              Cliquez sur la photo pour la modifier
+            </small>
+          </div>
         </div>
       </div>
 
-      {/* Formulaire de modification */}
-      <div className="card mt-4 p-4">
-        <h3>Modifier mon profil</h3>
+      {/* FORMULAIRE */}
+      <div className="card shadow-sm p-4">
+        <h4 className="mb-4">Modifier mes informations</h4>
 
-        {/* Upload photo */}
-        <div className="mb-3">
-          <label className="form-label">Photo de profil</label>
-          <input
-            type="file"
-            accept="image/*"
-            className="form-control"
-            onChange={handleFileChange}
-          />
-        </div>
-
-        {/* Nom + Email */}
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label className="form-label">Nom complet</label>
@@ -111,7 +122,7 @@ function Modification() {
           </div>
 
           <div className="mb-3">
-            <label className="form-label">Email</label>
+            <label className="form-label">Adresse email</label>
             <input
               type="email"
               className="form-control"
@@ -121,10 +132,16 @@ function Modification() {
             />
           </div>
 
-          <button type="submit" className="btn btn-primary">Enregistrer</button>
+          <button className="btn btn-primary px-4" disabled={loading}>
+            {loading ? "Enregistrement..." : "💾 Enregistrer"}
+          </button>
         </form>
 
-        {message && <p className="mt-3 text-success">{message}</p>}
+        {message && (
+          <div className="alert alert-success mt-3 mb-0">
+            {message}
+          </div>
+        )}
       </div>
     </div>
   );
