@@ -10,7 +10,7 @@ function After () {
       <ul class="navbar-nav ms-auto">
         
         <li class="nav-item"><link class="nav-link" href="Formations.jsx">Formations</link></li>
-        <li class="nav-item"><link class="nav-link" href="profil.jsx">Mon profil</link></li>
+        <li class="nav-item"><link class="nav-link" href="Profil.jsx">Mon profil</link></li>
         <li class="nav-item"><link class="nav-link" href="Logout.jsx">Déconnexion</link></li>
       </ul>
     </div>
