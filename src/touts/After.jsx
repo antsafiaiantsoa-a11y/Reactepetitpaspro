@@ -1,64 +1,85 @@
 import { Link } from "react-router-dom";
 
-function After () {
+function After() {
   return (
     <>
-    <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="index.html">E‑<span>Petitpas</span></a>
-      <ul class="navbar-nav ms-auto">
-        
-        <li class="nav-item"><link class="nav-link" href="Formations.jsx">Formations</link></li>
-        <li class="nav-item"><link class="nav-link" href="profil.jsx">Mon profil</link></li>
-        <li class="nav-item"><link class="nav-link" href="Logout.jsx">Déconnexion</link></li>
-      </ul>
-    </div>
-  </nav>
-</header>
+      <header>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div className="container">
+            <Link className="navbar-brand fw-bold" to="/after">
+              E-<span>Petitpas</span>
+            </Link>
 
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item">
+                <Link className="nav-link" to="/formations">
+                  Formations
+                </Link>
+              </li>
 
-<section class="hero">
-  <h1>Bienvenue <span id="username"></span> 👋</h1>
-  <p>Voici votre espace personnel pour suivre vos formations, vos financements et vos notifications.</p>
-</section>
+              <li className="nav-item">
+                <Link className="nav-link" to="/profil">
+                  Mon profil
+                </Link>
+              </li>
 
-      
-    <section className="section">
-      <h2>Vos accès rapides</h2>
-      <div className="cards">
-        <div className="card">
-          <h3>📚 Mes Formations</h3>
-          <p>Consultez vos formations en cours et inscrivez‑vous à de nouveaux parcours.</p>
-          <Link to="/formations" className="btn-main">
-            Voir mes formations
-          </Link>
-        </div>
-        <div className="card">
-          <h3>💳 Financement</h3>
-          <p>Suivez vos demandes de financement et explorez les solutions disponibles.</p>
-          <Link to="/financement" className="btn-main">
-            Voir mes financements
-          </Link>
-        </div>
-        <div className="card">
-          <h3>👤 Mon Profil</h3>
-          <p>Mettez à jour vos informations personnelles et vos préférences.</p>
-          <Link to="/profil" className="btn-main">
-            Modifier mon profil
-          </Link>
-        </div>
-        <div className="card">
-          <h3>🔔 Notifications</h3>
-          <p>Retrouvez vos rappels, messages et actualités importantes.</p>
-          <Link to="/notifications" className="btn-main">
-            Voir mes notifications
-          </Link>
-        </div>
-      </div>
-    </section>
- 
+              <li className="nav-item">
+                <Link className="nav-link" to="/logout">
+                  Déconnexion
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
 
+      <section className="hero">
+        <h1>
+          Bienvenue <span id="username"></span> 👋
+        </h1>
+        <p>
+          Voici votre espace personnel pour suivre vos formations, vos financements
+          et vos notifications.
+        </p>
+      </section>
+
+      <section className="section">
+        <h2>Vos accès rapides</h2>
+
+        <div className="cards">
+          <div className="card">
+            <h3>📚 Mes Formations</h3>
+            <p>Consultez vos formations en cours.</p>
+            <Link to="/formations" className="btn-main">
+              Voir mes formations
+            </Link>
+          </div>
+
+          <div className="card">
+            <h3>💳 Financement</h3>
+            <p>Suivez vos demandes de financement.</p>
+            <Link to="/financement" className="btn-main">
+              Voir mes financements
+            </Link>
+          </div>
+
+          <div className="card">
+            <h3>👤 Mon Profil</h3>
+            <p>Modifiez vos informations personnelles.</p>
+            <Link to="/profil" className="btn-main">
+              Modifier mon profil
+            </Link>
+          </div>
+
+          <div className="card">
+            <h3>🔔 Notifications</h3>
+            <p>Consultez vos notifications.</p>
+            <Link to="/notifications" className="btn-main">
+              Voir mes notifications
+            </Link>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
