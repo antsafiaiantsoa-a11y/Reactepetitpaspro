@@ -44,6 +44,7 @@ function Formations() {
         </p>
       </section>
 
+
       <section className="container my-5">
         <div className="row g-4">
           {formations.map((f) => (

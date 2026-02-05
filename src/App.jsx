@@ -18,6 +18,7 @@ import After from './touts/After';
 import Modification from './touts/Modification';
 import Profil from './touts/Profil';
 import Logout from "./touts/Logout";
+import Formations from './touts/formations';
 
 
 
