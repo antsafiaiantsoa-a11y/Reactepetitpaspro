@@ -9,7 +9,7 @@ function After () {
       <a class="navbar-brand fw-bold" href="index.html">E‑<span>Petitpas</span></a>
       <ul class="navbar-nav ms-auto">
         
-        <li class="nav-item"><a class="nav-link" href="formations.jsx">Formations</a></li>
+        <li class="nav-item"><a class="nav-link" href="Formations.jsx">Formations</a></li>
         <li class="nav-item"><a class="nav-link" href="profil.jsx">Mon profil</a></li>
         <li class="nav-item"><a class="nav-link" href="logout.jsx">Déconnexion</a></li>
       </ul>
