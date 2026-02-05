@@ -46,7 +46,7 @@ function AppLayout() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/modification" element={<Modification />} />
         <Route path="/after" element={<After />} />
-        <Route path="/Profil" element={<Profil />} />
+        <Route path="/profil" element={<Profil />} />
         <Route path="/connexion" element={<Connexion />} />
         <Route path="/inscription" element={<Inscription />} />
         <Route path="/logout" element={<Logout />} />
