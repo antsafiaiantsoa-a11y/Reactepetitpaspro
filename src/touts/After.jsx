@@ -17,6 +17,7 @@ function After () {
   </nav>
 </header>
 
+
 <section class="hero">
   <h1>Bienvenue <span id="username"></span> 👋</h1>
   <p>Voici votre espace personnel pour suivre vos formations, vos financements et vos notifications.</p>
