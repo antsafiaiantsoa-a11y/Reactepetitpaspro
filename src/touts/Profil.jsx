@@ -5,70 +5,101 @@ function Profil() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetch("https://backendepetitpas-production.up.railway.app/api/users", { credentials: "include" })
+    fetch("https://backendepetitpas-production.up.railway.app/api/users", {
+      credentials: "include",
+    })
       .then(res => res.json())
       .then(data => setUser(data))
       .catch(err => console.error(err));
   }, []);
 
   if (!user) {
-    return <p>Chargement du profil...</p>;
+    return (
+      <div className="text-center mt-5">
+        <div className="spinner-border text-primary"></div>
+        <p className="mt-3">Chargement du profil...</p>
+      </div>
+    );
   }
 
   return (
-    <>
-      {/* Header profil */}
-      <header className="d-flex align-items-center justify-content-between mb-4">
+    <div className="container py-4">
+
+      {/* HEADER */}
+      <header className="d-flex justify-content-between align-items-center mb-4">
         <div className="d-flex align-items-center gap-2">
-          <img src="image/e-petitpas.jpg" alt="Logo" style={{ width: 150 }} />
-          <h1 className="fw-bold mt-2">E-Petitpas</h1>
+          <img src="image/e-petitpas.jpg" alt="Logo" style={{ width: 120 }} />
+          <h4 className="fw-bold m-0">E-Petitpas</h4>
         </div>
         <nav>
-          <ul className="d-flex gap-3 list-unstyled mb-0">
-            <li><Link to="/accueil">Accueil</Link></li>
-            <li><Link to="/formations">Formations</Link></li>
-            <li><Link to="/logout">Déconnexion</Link></li>
-          </ul>
+          <Link to="/accueil" className="me-3">Accueil</Link>
+          <Link to="/formations" className="me-3">Formations</Link>
+          <Link to="/logout" className="text-danger">Déconnexion</Link>
         </nav>
       </header>
 
-      {/* Profil utilisateur */}
-      <div className="profile-header text-center py-5">
+      {/* PROFIL CARD */}
+      <div className="card shadow-sm p-4 mb-5 text-center">
         <img
-          id="user-photo"
           src={user.avatar || "image/default-avatar.jpg"}
-          alt="Photo"
-          className="profile-pic mb-3"
-          style={{ width: 120, height: 120, borderRadius: "50%", objectFit: "cover" }}
+          alt="Avatar"
+          className="rounded-circle border mb-3"
+          style={{ width: 130, height: 130, objectFit: "cover" }}
         />
 
-        <div className="profile-info">
-          <h2 id="user-name">{user.full_name}</h2>
-          <p id="user-email" className="text-muted">{user.email}</p>
+        <h2 className="mb-1">{user.full_name}</h2>
+        <p className="text-muted mb-3">{user.email}</p>
 
-          <Link to="/modification" className="btn btn-primary">
-            <i className="bi bi-pencil-square me-2"></i>
-            Modifier profil
-          </Link>
-        </div>
+        <Link to="/modification" className="btn btn-primary px-4">
+          <i className="bi bi-pencil-square me-2"></i>
+          Modifier mon profil
+        </Link>
       </div>
 
-      {/* Contenu */}
-      <div className="container my-5">
-        <div className="row g-4">
-          <div className="col-md-3">
-            <div className="card p-3 text-center h-100">
-              <i className="bi bi-mortarboard-fill fs-1 text-primary"></i>
-              <h3 className="mt-2">Mes Formations</h3>
-              <p>Gérez vos cours en ligne</p>
-              <Link to="/formation" className="btn btn-outline-primary">
-                Voir
-              </Link>
-            </div>
+      {/* DASHBOARD */}
+      <div className="row g-4">
+
+        <div className="col-md-4">
+          <div className="card h-100 text-center shadow-sm p-4">
+            <i className="bi bi-mortarboard-fill fs-1 text-primary"></i>
+            <h4 className="mt-3">Mes formations</h4>
+            <p className="text-muted">
+              Accédez à vos cours et suivez votre progression.
+            </p>
+            <Link to="/formations" className="btn btn-outline-primary">
+              Voir mes formations
+            </Link>
           </div>
         </div>
+
+        <div className="col-md-4">
+          <div className="card h-100 text-center shadow-sm p-4">
+            <i className="bi bi-credit-card-fill fs-1 text-success"></i>
+            <h4 className="mt-3">Financement</h4>
+            <p className="text-muted">
+              Consultez vos demandes de financement.
+            </p>
+            <Link to="/financement" className="btn btn-outline-success">
+              Voir mes financements
+            </Link>
+          </div>
+        </div>
+
+        <div className="col-md-4">
+          <div className="card h-100 text-center shadow-sm p-4">
+            <i className="bi bi-bell-fill fs-1 text-warning"></i>
+            <h4 className="mt-3">Notifications</h4>
+            <p className="text-muted">
+              Messages, rappels et annonces importantes.
+            </p>
+            <Link to="/notifications" className="btn btn-outline-warning">
+              Voir les notifications
+            </Link>
+          </div>
+        </div>
+
       </div>
-    </>
+    </div>
   );
 }
 
