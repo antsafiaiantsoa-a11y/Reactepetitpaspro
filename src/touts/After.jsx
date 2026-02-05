@@ -29,7 +29,7 @@ function After () {
         <div className="card">
           <h3>📚 Mes Formations</h3>
           <p>Consultez vos formations en cours et inscrivez‑vous à de nouveaux parcours.</p>
-          <Link to="/formation" className="btn-main">
+          <Link to="/formations" className="btn-main">
             Voir mes formations
           </Link>
         </div>
