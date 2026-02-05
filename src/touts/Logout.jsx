@@ -11,7 +11,7 @@ function Logout() {
     })
     .then(() => {
       localStorage.removeItem("user"); // si tu stockes l'utilisateur
-      navigate("/login");
+      navigate("/connexion");
     })
     .catch(err => {
       console.error("Erreur logout :", err);
