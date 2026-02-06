@@ -147,7 +147,7 @@ function Inscription() {
 
       <div className="text-center mt-4 register-links">
         <p className="mb-1">Déjà un compte ?</p>
-        <Link to="/after">Se connecter</Link>
+        <Link to="/connexion">Se connecter</Link>
 
       </div>
     </div>
